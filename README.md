@@ -1,1 +1,65 @@
 # MutexMatch4SSL
+
+Codes for MutexMatch.
+## Requirements
+- matplotlib==3.3.2
+- numpy==1.19.2
+- pandas==1.1.5
+- Pillow==9.0.1
+- torch==1.4.0+cu92
+- torchvision==0.5.0+cu92
+## Train
+### Important Args
+- `--num_labels` Amount of labeled data used.  
+- `--net_from_name` and `--net` By default, wide resnet (WRN-28-2) are used for experiments. If you want to use other backbones for tarining, set `--net_from_name True --net @backbone`. We provide alternatives as follows: resnet18, cnn13 and preresnet.
+- `--dataset` and `--data` Your dataset name and path. We support four datasets: CIFAR-10, CIFAR-100, STL-10 and mini-ImageNet. When `--dataset stl10`, set `--fold [0/1/2/3/4].`
+- `--num_eval_iter` After how many iterations, we evaluate the model. **Note that although we show the accuracy of pseudo-labels on unlabeled data in the evaluation, this is only to show the training process. We did not use any information about labels for unlabeled data in the training. Additionally, when you train model on STL-10, the pseudo-label accuracy will not be displayed normally, because we don't have ground-truth of unlabeled data.**
+### Training with Single GPU
+All models in this paper are trained on a single GPU.
+
+```
+python train_bda.py --rank 0 --gpu [0/1/...] @@@other args@@@
+```
+### Training with Multi-GPUs (DistributedDataParallel)
+We only have one node.
+
+```
+python train_bda.py --world-size 1 --rank 0 --multiprocessing-distributed @@@other args@@@
+```
+### Examples of Running
+This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. For CIFAR-100, you need set `--widen_factor 8` for WRN-28-8 whereas WRN-28-2 is used for CIFAR-10.  Note that you need set `--net_from_name True --net resnet18` for STL-10 and mini-ImageNet. 
+
+#### WideResNet
+
+```
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40  --gpu 0
+```
+
+> With 40labels, result of seed 1 (Acc/%): 94.90
+#### CNN-13
+
+```
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40 --net_from_name True --net cnn13 --gpu 0
+```
+> With 1000 labels, result of seed 1 (Acc/%): 93.01
+
+#### ResNet-18
+
+```
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
+```
+> With 1000 labels, result of seed 1 (Acc/%): 47.90
+
+## Resume Training and Evaluation
+### Resume
+If you restart the training, please use `--resume --load_path @your_path`. 
+
+### Evaluation
+```
+python eval_mutex.py --data_dir @your_dataset_path --load_path @your_path --dataset @[cifar10/cifar100/stl10/miniimage] 
+```
+Use `--net_from_name True` and `--net [cnn13/resnet18]` for different backbones.
+## Acknowledgement
+Our code is based on open source code: [LeeDoYup/FixMatch-pytorch][1]
+
+[1]: https://github.com/LeeDoYup/FixMatch-pytorch

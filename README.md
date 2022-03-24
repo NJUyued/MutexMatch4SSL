@@ -10,6 +10,8 @@ Codes for MutexMatch.
 - torchvision==0.5.0+cu92
 ## Train
 ### Important Args
+- `--k` Control the intensity of consistency regularization on TNC. By default, k=num_classes
+- `--num_classes` The number of classes in your dataset.
 - `--num_labels` Amount of labeled data used.  
 - `--net_from_name` and `--net` By default, wide resnet (WRN-28-2) are used for experiments. If you want to use other backbones for tarining, set `--net_from_name True --net @backbone`. We provide alternatives as follows: resnet18, cnn13 and preresnet.
 - `--dataset` and `--data` Your dataset name and path. We support four datasets: CIFAR-10, CIFAR-100, STL-10 and mini-ImageNet. When `--dataset stl10`, set `--fold [0/1/2/3/4].`
@@ -35,20 +37,20 @@ This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. 
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40  --gpu 0
 ```
 
-> With 40labels, result of seed 1 (Acc/%): 94.90
+> CIFAR-10, with 40labels, result of seed 1 (Acc/%): 94.87
 #### CNN-13
 
 ```
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 1000 --net_from_name True --net cnn13 --gpu 0
 ```
-> With 1000 labels, result of seed 1 (Acc/%): 93.01
+> CIFAR-10, with 1000 labels, result of seed 1 (Acc/%): 93.01
 
 #### ResNet-18
 
 ```
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
 ```
-> With 1000 labels, result of seed 1 (Acc/%): 47.90
+> mini-ImageNet, with 1000 labels, result of seed 1 (Acc/%): 47.90
 
 ## Resume Training and Evaluation
 ### Resume
@@ -59,6 +61,19 @@ If you restart the training, please use `--resume --load_path @your_path`.
 python eval_mutex.py --data_dir @your_dataset_path --load_path @your_path --dataset @[cifar10/cifar100/stl10/miniimage] 
 ```
 Use `--net_from_name True` and `--net [cnn13/resnet18]` for different backbones.
+
+## Results (CIFAR-10)
+- k=num_classes
+
+|seed | 10 labels | 20 labels| 40 labels|80 labels|
+| :-----:| :-----:| :----: | :----: |:----: |
+| 1| 15.73 | 93.43 |94.87 |93.69|
+| 2| 71.47 | 93.24 |94.76 |93.64|
+| 3| 93.07 | 93.42 |92.96 |92.05|
+| 4| 86.32 | 87.56 |88.41 |93.43|
+| 5| 65.66 |91.18 |95.09 |93.32|
+|avg | 66.45 |91.77 |93.22 |93.23|
+
 ## Acknowledgement
 Our code is based on open source code: [LeeDoYup/FixMatch-pytorch][1]
 

@@ -1,6 +1,6 @@
 # MutexMatch4SSL
 
-Codes for MutexMatch.
+Code for MutexMatch.
 ## Requirements
 - matplotlib==3.3.2
 - numpy==1.19.2
@@ -20,13 +20,13 @@ Codes for MutexMatch.
 All models in this paper are trained on a single GPU.
 
 ```
-python train_bda.py --rank 0 --gpu [0/1/...] @@@other args@@@
+python train_mutex.py --rank 0 --gpu [0/1/...] @@@other args@@@
 ```
 ### Training with Multi-GPUs (DistributedDataParallel)
 We only have one node.
 
 ```
-python train_bda.py --world-size 1 --rank 0 --multiprocessing-distributed @@@other args@@@
+python train_mutex.py --world-size 1 --rank 0 --multiprocessing-distributed @@@other args@@@
 ```
 ### Examples of Running
 This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. For CIFAR-100, you need set `--widen_factor 8` for WRN-28-8 whereas WRN-28-2 is used for CIFAR-10.  Note that you need set `--net_from_name True --net resnet18` for STL-10 and mini-ImageNet. 

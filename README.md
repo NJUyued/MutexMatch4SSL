@@ -38,14 +38,14 @@ This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. 
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40  --gpu 0
 ```
 
-> CIFAR-10, with 40 labels, result of seed 1 (Acc/%): 94.91
+> CIFAR-10, with 40 labels, result of seed 1 (Acc/%): 94.91, weight: [here][cifar10]
 
 ```
-## CIFAR-100
-python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40  --gpu 0
+## CIFAR-100 k==60
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --k 60 --widen_factor 8 --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar100 --dataset cifar100 --num_classes 100 --num_labels 200  --gpu 0
 ```
 
-> CIFAR-100, with 200 labels, result of seed 1 (Acc/%): 94.87
+> CIFAR-100, with 200 labels, result of seed 1 (Acc/%): 43.84, weight: [here][cifar100]
 
 ```
 ## SVHN
@@ -58,14 +58,14 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 ```
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 1000 --net_from_name True --net cnn13 --gpu 0
 ```
-> CIFAR-10, with 1000 labels, result of seed 1 (Acc/%): 93.01
+> CIFAR-10, with 1000 labels, result of seed 1 (Acc/%): 93.01, weight: [here][3]
 
 #### ResNet-18
 
 ```
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
 ```
-> mini-ImageNet, with 1000 labels, result of seed 1 (Acc/%): 47.90
+> mini-ImageNet, with 1000 labels, result of seed 1 (Acc/%): 47.90, weight: [here][mini]
 
 ## Resume Training and Evaluation
 ### Resume
@@ -106,3 +106,7 @@ Our code is based on open source code: [LeeDoYup/FixMatch-pytorch][1]
 
 [1]: https://github.com/LeeDoYup/FixMatch-pytorch
 [2]: https://1drv.ms/u/s!Ao848hI985sshh1L1hbkwSWz7fdu?e=JnFxBB
+[3]: https://1drv.ms/u/s!Ao848hI985sshhsvuQSFJ-pu1gRv?e=od6PnI
+[cifar10]: https://1drv.ms/u/s!Ao848hI985sshhl8PY0R-xZ-leSu?e=4MPVya
+[mini]: https://1drv.ms/u/s!Ao848hI985sshh_x8vW7gACP4SRK?e=iuiici
+[cifar100]: https://1drv.ms/u/s!Ao848hI985sshiHv6ghquy7ApJ-_?e=gGOXfh

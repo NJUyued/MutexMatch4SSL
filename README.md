@@ -41,7 +41,7 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 > CIFAR-10, with 40 labels, result of seed 1 (Acc/%): 94.91, weight: [here][cifar10]
 
 ```
-## CIFAR-100 k==60
+## CIFAR-100 k=60
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --k 60 --widen_factor 8 --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar100 --dataset cifar100 --num_classes 100 --num_labels 200  --gpu 0
 ```
 
@@ -56,6 +56,7 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 #### CNN-13
 
 ```
+## CIFAR-10
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 1000 --net_from_name True --net cnn13 --gpu 0
 ```
 > CIFAR-10, with 1000 labels, result of seed 1 (Acc/%): 93.01, weight: [here][3]
@@ -63,7 +64,8 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 #### ResNet-18
 
 ```
-python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
+## mini-ImageNet
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name mini --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
 ```
 > mini-ImageNet, with 1000 labels, result of seed 1 (Acc/%): 47.90, weight: [here][mini]
 

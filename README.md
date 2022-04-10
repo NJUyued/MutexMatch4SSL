@@ -34,10 +34,25 @@ This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. 
 #### WideResNet
 
 ```
+## CIFAR-10
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40  --gpu 0
 ```
 
-> CIFAR-10, with 40labels, result of seed 1 (Acc/%): 94.87
+> CIFAR-10, with 40 labels, result of seed 1 (Acc/%): 94.91
+
+```
+## CIFAR-100
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar10 --dataset cifar10 --num_classes 10 --num_labels 40  --gpu 0
+```
+
+> CIFAR-100, with 200 labels, result of seed 1 (Acc/%): 94.87
+
+```
+## SVHN
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name SVHN --dataset svhn --num_classes 10 --num_labels 40  --gpu 0
+```
+
+> SVHN, with 40 labels, result of seed 1 (Acc/%): 97.24, weight: [here][2]
 #### CNN-13
 
 ```
@@ -67,11 +82,11 @@ Use `--net_from_name True` and `--net [cnn13/resnet18]` for different backbones.
 
 |seed | 10 labels | 20 labels| 40 labels|80 labels|
 | :-----:| :-----:| :----: | :----: |:----: |
-| 1| 15.73 | 93.43 |94.87 |93.69|
+| 1| 15.73 | 93.43 |94.91 |93.69|
 | 2| 71.47 | 93.24 |94.76 |93.64|
 | 3| 93.07 | 93.42 |92.96 |92.05|
 | 4| 86.32 | 87.56 |88.41 |93.43|
-| 5| 65.66 |91.18 |95.09 |93.32|
+| 5| 65.66 |91.18 |95.05 |93.32|
 |avg | 66.45 |91.77 |93.22 |93.23|
 
 - k=0.6\*num_classes
@@ -90,3 +105,4 @@ Use `--net_from_name True` and `--net [cnn13/resnet18]` for different backbones.
 Our code is based on open source code: [LeeDoYup/FixMatch-pytorch][1]
 
 [1]: https://github.com/LeeDoYup/FixMatch-pytorch
+[2]: https://1drv.ms/u/s!Ao848hI985sshh1L1hbkwSWz7fdu?e=JnFxBB

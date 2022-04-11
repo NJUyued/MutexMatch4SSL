@@ -10,22 +10,21 @@ Code for MutexMatch.
 - torchvision==0.5.0+cu92
 ## Train
 ### Important Args
-- `--k` Control the intensity of consistency regularization on TNC. By default, k=num_classes
-- `--num_classes` The number of classes in your dataset.
-- `--num_labels` Amount of labeled data used.  
-- `--net_from_name` and `--net` By default, wide resnet (WRN-28-2) are used for experiments. If you want to use other backbones for tarining, set `--net_from_name True --net @backbone`. We provide alternatives as follows: resnet18, cnn13 and preresnet.
-- `--dataset [cifar10/cifar100/svhn/stl10/miniimage]` and `--data` Your dataset name and path. We support five datasets: CIFAR-10, CIFAR-100, SVHN, STL-10 and mini-ImageNet. When `--dataset stl10`, set `--fold [0/1/2/3/4].`
-- `--num_eval_iter` After how many iterations, we evaluate the model. **Note that although we show the accuracy of pseudo-labels on unlabeled data in the evaluation, this is only to show the training process. We did not use any information about labels for unlabeled data in the training. Additionally, when you train model on STL-10, the pseudo-label accuracy will not be displayed normally, because we don't have ground-truth of unlabeled data.**
+- `--k` : Control the intensity of consistency regularization on TNC. By default, k=num_classes
+- `--num_classes` : The number of classes in your dataset.
+- `--num_labels` : Amount of labeled data used.  
+- `--net_from_name` and `--net` : By default, wide resnet (WRN-28-2) are used for experiments. If you want to use other backbones for tarining, set `--net_from_name True --net @backbone`. We provide alternatives as follows: resnet18, cnn13 and preresnet.
+- `--dataset [cifar10/cifar100/svhn/stl10/miniimage]` and `--data` : Your dataset name and path. We support five datasets: CIFAR-10, CIFAR-100, SVHN, STL-10 and mini-ImageNet. When `--dataset stl10`, set `--fold [0/1/2/3/4].`
+- `--num_eval_iter` : After how many iterations, we evaluate the model. Note that although we show the accuracy of pseudo-labels on unlabeled data in the evaluation, this is only to show the training process. We did not use any information about labels for unlabeled data in the training. Additionally, when you train model on STL-10, the pseudo-label accuracy will not be displayed normally, because we don't have ground-truth of unlabeled data.
 ### Training with Single GPU
-All models in this paper are trained on a single GPU.
 
 ```
 python train_mutex.py --rank 0 --gpu [0/1/...] @@@other args@@@
 ```
 ### Training with Multi-GPUs (DistributedDataParallel)
-We only have one node.
 
 ```
+## for one node
 python train_mutex.py --world-size 1 --rank 0 --multiprocessing-distributed @@@other args@@@
 ```
 ### Examples of Running
@@ -40,6 +39,8 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 
 > CIFAR-10, with 40 labels, result of seed 1 (Acc/%): 94.91, weight: [here][cifar10]
 
+***
+
 ```
 ## CIFAR-100 k=60
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --k 60 --widen_factor 8 --seed 1 --num_eval_iter 1000 --overwrite --save_name cifar100 --dataset cifar100 --num_classes 100 --num_labels 200  --gpu 0
@@ -47,12 +48,16 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --k 60 --widen_fact
 
 > CIFAR-100, with 200 labels, result of seed 1 (Acc/%): 43.84, weight: [here][cifar100]
 
+***
+
 ```
 ## SVHN
-python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name SVHN --dataset svhn --num_classes 10 --num_labels 40  --gpu 0
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name svhn --dataset svhn --num_classes 10 --num_labels 40  --gpu 0
 ```
 
 > SVHN, with 40 labels, result of seed 1 (Acc/%): 97.24, weight: [here][2]
+
+***
 #### CNN-13
 
 ```
@@ -61,14 +66,17 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 ```
 > CIFAR-10, with 1000 labels, result of seed 1 (Acc/%): 93.01, weight: [here][3]
 
+***
+
 #### ResNet-18
 
 ```
 ## mini-ImageNet
-python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name mini --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
+python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name miniimage --dataset miniimage --num_classes 100 --num_labels 1000 --net_from_name True --net resnet18 --gpu 0
 ```
 > mini-ImageNet, with 1000 labels, result of seed 1 (Acc/%): 47.90, weight: [here][mini]
 
+***
 ## Resume Training and Evaluation
 ### Resume
 If you restart the training, please use `--resume --load_path @your_path`. 

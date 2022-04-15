@@ -1,6 +1,7 @@
 # MutexMatch4SSL
 
 Code for MutexMatch.
+arxiv: [https://arxiv.org/abs/2203.14316][a]
 ## Requirements
 - matplotlib==3.3.2
 - numpy==1.19.2
@@ -120,3 +121,4 @@ Our code is based on open source code: [LeeDoYup/FixMatch-pytorch][1]
 [cifar10]: https://1drv.ms/u/s!Ao848hI985sshhl8PY0R-xZ-leSu?e=4MPVya
 [mini]: https://1drv.ms/u/s!Ao848hI985sshh_x8vW7gACP4SRK?e=iuiici
 [cifar100]: https://1drv.ms/u/s!Ao848hI985sshiHv6ghquy7ApJ-_?e=gGOXfh
+[a]: https://arxiv.org/abs/2203.14316

@@ -1,7 +1,8 @@
 # MutexMatch4SSL
 
 Code for MutexMatch.
-arxiv: [https://arxiv.org/abs/2203.14316][a]
+
+arxiv: [https://arxiv.org/abs/2203.14316][a].
 ## Requirements
 - matplotlib==3.3.2
 - numpy==1.19.2

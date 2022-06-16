@@ -10,7 +10,7 @@ arxiv: [https://arxiv.org/abs/2203.14316][a].
 - Pillow==9.0.1
 - torch==1.4.0+cu92
 - torchvision==0.5.0+cu92
-## Train
+## Training
 ### Important Args
 - `--k` : Control the intensity of consistency regularization on TNC. By default, k=num_classes
 - `--num_classes` : The number of classes in your dataset.

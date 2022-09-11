@@ -79,7 +79,7 @@ If you restart the training, please use `--resume --load_path @your_path`.
 
 ### Evaluation
 ```
-python eval_mutex.py --data_dir @your_dataset_path --load_path @your_path --dataset @[cifar10/cifar100/svhn/stl10/miniimage] 
+python eval_mutex.py --data_dir @your_dataset_path --load_path @your_path --dataset @[cifar10/cifar100/svhn/stl10/miniimage/tinyimage] 
 ```
 Use `--net [cnn13/resnet18]` for different backbones.
 

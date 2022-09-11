@@ -48,10 +48,30 @@ def net_builder(net_name, net_conf=None, num_classes=10):
         builder = getattr(net, 'build_ResNet18')()
         setattr_cls_from_kwargs(builder, {'base_net':base_net})
     else:
+<<<<<<< HEAD
         assert Exception("Not Implemented Error")
             
     return builder.build
         
+=======
+        import torchvision.models as models_torch
+        if net_name == 'wrn':
+            import models.nets.wrn as net
+            builder = getattr(net, 'build_WideResNet')()
+            setattr_cls_from_kwargs(builder, net_conf)
+        elif net_name == 'cnn13':
+            import models.nets.net as net
+            builder = getattr(net, 'build_CNN13')()
+        elif net_name=='resnet18':
+            import models.nets.net as net
+            base_net = models_torch.__dict__[net_name]
+            builder = getattr(net, 'build_ResNet18')()
+            setattr_cls_from_kwargs(builder, {'base_net':base_net})
+        else:
+            assert Exception("Not Implemented Error")
+            
+        return builder.build
+>>>>>>> d0930ed032a9f05ac4931ff527195eb52701a80e
 
     
 def test_net_builder(net_name, from_name, net_conf=None):

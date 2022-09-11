@@ -126,7 +126,12 @@ def main_worker(gpu, ngpus_per_node, args):
                      args.k,
                      num_eval_iter=args.num_eval_iter,
                      tb_log=tb_log,
+<<<<<<< HEAD
                      logger=logger)
+=======
+                     logger=logger,
+                     net_name=args.net)
+>>>>>>> d0930ed032a9f05ac4931ff527195eb52701a80e
     logger.info(f'Number of Trainable Params: {count_parameters(model.train_model)}')
         
 
@@ -328,6 +333,10 @@ if __name__ == "__main__":
     Backbone Net Configurations
     '''
     parser.add_argument('--net', type=str, default='wrn')
+<<<<<<< HEAD
+=======
+    parser.add_argument('--net_from_name', type=bool, default=False)
+>>>>>>> d0930ed032a9f05ac4931ff527195eb52701a80e
     parser.add_argument('--depth', type=int, default=28)
     parser.add_argument('--widen_factor', type=int, default=2)
     parser.add_argument('--leaky_slope', type=float, default=0.1)

@@ -98,9 +98,13 @@ class SSL_Dataset:
         if self.name=='stl10':
             if self.train:
                 dset = getattr(torchvision.datasets, self.name.upper())
-                dset_lb = dset(self.data_dir, split='train', folds=self.fold, download=True)
+                if self.fold in [0,1,2,3,4]:
+                    dset_lb = dset(self.data_dir, split='train', folds=self.fold, download=True)
+                    dset_lb_ulb = dset(self.data_dir, split='train+unlabeled', folds=self.fold, download=True)
+                else:
+                    dset_lb = dset(self.data_dir, split='train', download=True)
+                    dset_lb_ulb = dset(self.data_dir, split='unlabeled', download=True)
                 data_lb, targets_lb = dset_lb.data, dset_lb.labels
-                dset_lb_ulb = dset(self.data_dir, split='train+unlabeled', folds=self.fold, download=True)
                 data_lb_ulb, targets_lb_ulb = dset_lb_ulb.data, dset_lb_ulb.labels
                 return data_lb, targets_lb, data_lb_ulb, targets_lb_ulb
             else:
@@ -185,7 +189,7 @@ class SSL_Dataset:
             lbs = []
             for c in range(num_classes):
                 idx = np.where(targets_lb == c)[0]
-                idx = np.random.choice(idx, len(idx), False) if num_labels==1000 else  np.random.choice(idx, samples_per_class, False)             
+                idx = np.random.choice(idx, len(idx), False) if num_labels==1000 or num_labels==5000 else  np.random.choice(idx, samples_per_class, False)             
                 temp_data = data_lb[idx]
                 temp_lb = targets_lb[idx]
                 lb_data.extend(temp_data)

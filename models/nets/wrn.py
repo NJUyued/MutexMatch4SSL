@@ -94,7 +94,10 @@ class WideResNet(nn.Module):
         out = self.block2(out)
         out = self.block3(out)
         out = self.relu(self.bn1(out))
-        out = F.avg_pool2d(out, 8)
+        if out.size(3)==8:
+            out = F.avg_pool2d(out, 8)
+        else:
+            out = F.adaptive_avg_pool2d(out, 1)
         out = out.view(-1, self.nChannels)
         output = self.fc(out)
         if ood_test:

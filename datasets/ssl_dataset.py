@@ -10,17 +10,20 @@ from .dataset import BasicDataset
 
 import torchvision
 from torchvision import datasets, transforms
+from .tinyimage import *
 
 mean, std = {}, {}
 mean['cifar10'] = [x / 255 for x in [125.3, 123.0, 113.9]]
 mean['cifar100'] = [x / 255 for x in [129.3, 124.1, 112.4]]
 mean['stl10'] = [x / 255 for x in [0.44087965, 0.42790789, 0.38678672]]
 mean['svhn'] = [x / 255 for x in [0.4380, 0.4440, 0.4730]]
+mean['tinyimage'] = [x / 255 for x in [0.485, 0.456, 0.406]]
 
 std['cifar10'] = [x / 255 for x in [63.0, 62.1, 66.7]]
 std['cifar100'] = [x / 255 for x in [68.2,  65.4,  70.4]]
 std['stl10'] = [x / 255 for x in [0.23089217, 0.22623343, 0.22368798]]
 std['svhn'] = [x / 255 for x in [0.1751, 0.1771, 0.1744]]
+std['tinyimage'] = [x / 255 for x in [0.229, 0.224, 0.225]]
 
 
 
@@ -42,6 +45,14 @@ def get_transform(mean, std, name, train=True):
         else:
             return transforms.Compose([transforms.ToTensor(), 
                                         transforms.Normalize(mean, std)])
+    elif name=='tinyimage':      
+        if train:
+            return transforms.Compose([transforms.RandomCrop(64, padding=4),
+                                        transforms.ToTensor(), 
+                                        transforms.Normalize(mean, std)])
+        else:
+            return transforms.Compose([transforms.ToTensor(), 
+                                        transforms.Normalize(mean, std)])   
     else:
         if train:
             return transforms.Compose([transforms.RandomHorizontalFlip(),
@@ -108,6 +119,13 @@ class SSL_Dataset:
                 dset = dset(self.data_dir, split='test', download=True)
                 data, targets = dset.data, dset.labels
                 return data, targets
+        elif self.name=='tinyimage':
+            if self.train:
+                dset = TinyImageNet(self.data_dir, train=True)
+                return dset.data, dset.targets
+            else:
+                dset = TinyImageNet(self.data_dir, train=False)
+                return dset.data, dset.targets
         else:
             dset = getattr(torchvision.datasets, self.name.upper())
             dset = dset(self.data_dir, train=self.train, download=True)      
@@ -162,9 +180,19 @@ class SSL_Dataset:
             num_classes = self.num_classes
             transform = self.transform
             data_dir = self.data_dir
-
-            lb_dset = BasicDataset(data_lb, targets_lb, num_classes, 
-                                transform, False, None, onehot)           
+            samples_per_class = int(num_labels / num_classes)
+            lb_data = []
+            lbs = []
+            for c in range(num_classes):
+                idx = np.where(targets_lb == c)[0]
+                idx = np.random.choice(idx, len(idx), False) if num_labels==1000 else  np.random.choice(idx, samples_per_class, False)             
+                temp_data = data_lb[idx]
+                temp_lb = targets_lb[idx]
+                lb_data.extend(temp_data)
+                lbs.extend(temp_lb)
+            
+            lb_dset = BasicDataset(np.array(lb_data),  np.array(lbs), num_classes, 
+                                transform, False, None, onehot)                
             ulb_dset = BasicDataset(data_lb_ulb, targets_lb_ulb, num_classes, 
                                 transform, use_strong_transform, strong_transform, onehot)
 

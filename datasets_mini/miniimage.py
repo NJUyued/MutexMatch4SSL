@@ -49,7 +49,7 @@ class GaussianBlur(object):
 
 
 class MiniImage(Dataset):
-    def __init__(self, root, indexs, train=True, mode=None, isize=84):
+    def __init__(self, root, indexs, train=True, mode=None, isize=80):
         super(MiniImage, self).__init__()
         self.mode = mode
         # 1. data

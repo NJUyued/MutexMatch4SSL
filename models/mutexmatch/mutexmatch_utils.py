@@ -45,7 +45,7 @@ def consistency_loss(logits_x_ulb_w_reverse, logits_x_ulb_s_reverse, logits_w, l
         if use_hard_labels:
             masked_loss = ce_loss(logits_s, max_idx, use_hard_labels, reduction='none') * mask
             masked_reverse_loss = ce_loss(logits_x_ulb_s_reverse, pseudo_label_reverse, use_hard_labels = False, reduction='none') * mask_dis 
-  
+            # masked_reverse_loss = ce_loss(logits_s, max_idx, use_hard_labels, reduction='none') * mask_dis
         else:
             pseudo_label = torch.softmax(logits_w/T, dim=-1)
             masked_loss = ce_loss(logits_s, pseudo_label, use_hard_labels) * mask

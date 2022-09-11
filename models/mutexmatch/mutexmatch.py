@@ -2,7 +2,6 @@ from ast import arg
 from models.nets.net import *
 from torch import optim
 import numpy as np
-import cv2
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -21,13 +20,7 @@ from train_utils import ce_loss
 class TotalNet(nn.Module):
     def __init__(self, net_builder, num_classes, net_name):
         super(TotalNet, self).__init__()
-        if net_name=='resnet18':
-            base_net = net_builder(num_classes=num_classes)    
-            self.feature_extractor = ResNet18(num_classes, base_net)  
-        elif net_name=='cnn13':
-            self.feature_extractor = cnn13(num_classes=num_classes)  
-        else:
-            self.feature_extractor = net_builder(num_classes=num_classes)                  
+        self.feature_extractor = net_builder(num_classes=num_classes)  
         classifier_output_dim = num_classes
         self.classifier_reverse = ReverseCLS(self.feature_extractor.output_num(), classifier_output_dim)
         
@@ -46,7 +39,7 @@ class MutexMatch:
         self.num_classes = num_classes
         self.ema_m = ema_m
         
-        self.train_model = TotalNet(net_builder, num_classes, net_name) 
+        self.train_model = TotalNet(net_builder, num_classes, net_name)       
         self.eval_model = TotalNet(net_builder, num_classes, net_name) 
         self.num_eval_iter = num_eval_iter
         self.t_fn = Get_Scalar(T) #temperature params function
@@ -63,13 +56,11 @@ class MutexMatch:
         
         self.logger = logger
         self.print_fn = print if logger is None else logger.info
-        
         for param_q, param_k in zip(self.train_model.parameters(), self.eval_model.parameters()):
             param_k.data.copy_(param_q.detach().data)  # initialize
             param_k.requires_grad = False  # not update by gradient for eval_net
             
         self.eval_model.eval()
-            
             
     @torch.no_grad()
     def _eval_model_update(self):
@@ -150,16 +141,16 @@ class MutexMatch:
             
             # inference and calculate sup/unsup losses
             with amp_cm():
-                logits, feature = feature_extractor.forward(inputs, ood_test=True) 
+                logits, feature = feature_extractor(inputs, ood_test=True) 
                 
                 logits_x_lb = logits[:num_lb]
                 logits_x_ulb_w, logits_x_ulb_s = logits[num_lb:].chunk(2)
 
                 ##
-                feature, logits_reverse, predict_prob = cls_reverse.forward(feature)
+                feature, logits_reverse, predict_prob = cls_reverse(feature)
                 logits_x_ulb_w_reverse, logits_x_ulb_s_reverse = logits_reverse[num_lb:].chunk(2)
 
-                feature_separate, logits_reverse_separate, predict_prob_separate = cls_reverse.forward(feature.detach())
+                feature_separate, logits_reverse_separate, predict_prob_separate = cls_reverse(feature.detach())
 
                 complementary_label = torch.softmax(logits.detach(), dim=-1)        
                 min_probs_reverse, min_idx_reverse = torch.min(complementary_label, dim=-1)
@@ -167,10 +158,8 @@ class MutexMatch:
                 
                 # hyper-params for update
                 T = self.t_fn(self.it)
-                # p_cutoff = self.p_fn(self.it)
-                p_cutoff = 0.95
-                # lambda_d = self.p_fn(self.it)
-               
+                p_cutoff = self.p_fn(self.it)
+           
                 del logits
               
                 sup_loss = ce_loss(logits_x_lb, y_lb, reduction='mean')
@@ -186,7 +175,7 @@ class MutexMatch:
                                               'ce', T, p_cutoff,
                                                use_hard_labels=args.hard_label)
                 
-                total_loss = sup_loss + self.lambda_u * unsup_loss + reverse_loss +  masked_reverse_loss      
+                total_loss = sup_loss + self.lambda_u * unsup_loss + reverse_loss + self.lambda_u * masked_reverse_loss        
                     
             # parameter updates
             if args.amp:
@@ -273,7 +262,7 @@ class MutexMatch:
             num_batch = x.shape[0]
             total_num += num_batch
 
-            logits, feature = feature_extractor.forward(x, ood_test=True)           
+            logits, feature = feature_extractor(x, ood_test=True)           
             max_probs, max_idx = torch.max(torch.softmax(logits, dim=-1), dim=-1)
 
             loss = F.cross_entropy(logits, y, reduction='mean')
@@ -298,7 +287,7 @@ class MutexMatch:
             image = image.type(torch.FloatTensor).cuda()
             num_batch = image.shape[0]
  
-            logits, feature = feature_extractor.forward(image, ood_test=True)    
+            logits, feature = feature_extractor(image, ood_test=True)    
             pseudo_label = torch.softmax(logits, dim=-1)
             max_probs, max_idx = torch.max(pseudo_label, dim=-1)
             mask = max_probs.ge(p_cutoff)    
@@ -306,7 +295,7 @@ class MutexMatch:
             mask = mask.float()            
             maskindex_total = np.where(mask.cpu()==1)[0]
 
-            feature, logits_reverse, predict_prob = cls_reverse.forward(feature)
+            feature, logits_reverse, predict_prob = cls_reverse(feature)
             pseudo_label_reverse = torch.softmax(logits_reverse, dim=-1)
             
             acc_p_r += pseudo_label_reverse.cpu().max(1)[1].eq(target).sum().cpu().numpy()

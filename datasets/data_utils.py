@@ -76,7 +76,7 @@ def get_data_loader(dset,
                     batch_size = None,
                     shuffle = False,
                     num_workers = 4,
-                    pin_memory = True,
+                    pin_memory = False,
                     data_sampler = None,
                     replacement = True,
                     num_epochs = None,
@@ -118,7 +118,7 @@ def get_data_loader(dset,
             num_samples = len(dset)
 
         if data_sampler.__name__ == 'RandomSampler':    
-            data_sampler = data_sampler(dset, replacement, num_samples, generator)
+            data_sampler = data_sampler(dset, replacement, num_samples)
         else:
             raise RuntimeError(f"{data_sampler.__name__} is not implemented.")
         

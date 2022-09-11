@@ -39,6 +39,13 @@ class ResNet18(nn.Module):
     def output_num(self):
         return self.__in_features
 
+class build_ResNet18:
+    def __init__(self, base_net = None):
+        self.base_net = base_net
+    
+    def build(self, num_classes):
+        return ResNet18(num_classes = num_classes, base_net = self.base_net()) 
+
 
 class CNN13(nn.Module):
        
@@ -146,8 +153,13 @@ class CNN13(nn.Module):
         else:
             return out
 
-            
+class build_CNN13:
+    def __init__(self, dropout = 0.5):
+        self.dropout = dropout
     
-def cnn13(num_classes=10, dropout = 0.5):
-    model = CNN13(num_classes = num_classes, dropout=dropout)
-    return model
+    def build(self, num_classes):
+        return CNN13(num_classes = num_classes, dropout=self.dropout)          
+    
+# def cnn13(num_classes=10, dropout = 0.5):
+#     model = CNN13(num_classes = num_classes, dropout=dropout)
+#     return model

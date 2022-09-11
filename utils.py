@@ -8,7 +8,10 @@ def setattr_cls_from_kwargs(cls, kwargs):
     #overlap the value by kwargs
     for key in kwargs.keys():
         if hasattr(cls, key):
-            print(f"{key} in {cls} is overlapped by kwargs: {getattr(cls,key)} -> {kwargs[key]}")
+            if key== 'base_net':     
+                pass
+            else:
+                print(f"{key} in {cls} is overlapped by kwargs: {getattr(cls,key)} -> {kwargs[key]}")
         setattr(cls, key, kwargs[key])
 
         
@@ -52,13 +55,22 @@ def net_builder(net_name, from_name: bool, net_conf=None, num_classes=10):
                 return models.__dict__[net_name]
         
     else:
-        if net_name == 'WideResNet':
+        import torchvision.models as models_torch
+        if net_name == 'wrn':
             import models.nets.wrn as net
             builder = getattr(net, 'build_WideResNet')()
+            setattr_cls_from_kwargs(builder, net_conf)
+        elif net_name == 'cnn13':
+            import models.nets.net as net
+            builder = getattr(net, 'build_CNN13')()
+        elif net_name=='resnet18':
+            import models.nets.net as net
+            base_net = models_torch.__dict__[net_name]
+            builder = getattr(net, 'build_ResNet18')()
+            setattr_cls_from_kwargs(builder, {'base_net':base_net})
         else:
             assert Exception("Not Implemented Error")
             
-        setattr_cls_from_kwargs(builder, net_conf)
         return builder.build
 
     

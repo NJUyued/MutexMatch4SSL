@@ -18,7 +18,7 @@ from models.mutexmatch.mutexmatch import MutexMatch
 from datasets.ssl_dataset import SSL_Dataset
 from datasets.data_utils import get_data_loader
 
-# os.environ['CUDA_VISIBLE_DEVICES'] = '4' 
+# os.environ['CUDA_VISIBLE_DEVICES'] = '2,3,4,5' 
 
 def main(args):
     '''
@@ -129,7 +129,6 @@ def main_worker(gpu, ngpus_per_node, args):
                      tb_log=tb_log,
                      logger=logger,
                      net_name=args.net)
-
     logger.info(f'Number of Trainable Params: {count_parameters(model.train_model)}')
         
 
@@ -177,8 +176,12 @@ def main_worker(gpu, ngpus_per_node, args):
         
         
     else:
-        model.train_model = torch.nn.DataParallel(model.train_model).cuda()
-        model.eval_model = torch.nn.DataParallel(model.eval_model).cuda()
+        # model.train_model = torch.nn.DataParallel(model.train_model).cuda()
+        # model.eval_model = torch.nn.DataParallel(model.eval_model).cuda()
+        model.train_model.feature_extractor = torch.nn.DataParallel(model.train_model.feature_extractor).cuda()
+        model.train_model.classifier_reverse = torch.nn.DataParallel(model.train_model.classifier_reverse).cuda()
+        model.eval_model.feature_extractor = torch.nn.DataParallel(model.eval_model.feature_extractor).cuda()
+        model.eval_model.classifier_reverse = torch.nn.DataParallel(model.eval_model.classifier_reverse).cuda()
     
     logger.info(f"model_arch: {model}")
     logger.info(f"Arguments: {args}")
@@ -200,7 +203,7 @@ def main_worker(gpu, ngpus_per_node, args):
         )
         save_path = os.path.join(args.save_dir, args.save_name)
         dltrain_x, dltrain_u, dltrain_u_eval, pre_class_dist = get_train_loader(save_path, args.dataset, args.batch_size, args.uratio, args.num_train_iter, **data_para_dict)
-        dlval = get_val_loader(dataset=args.dataset, batch_size=args.eval_batch_size, num_workers=args.num_workers, root=args.data_dir)
+        dlval, dsval = get_val_loader(dataset=args.dataset, batch_size=args.eval_batch_size, num_workers=args.num_workers, root=args.data_dir)
         loader_dict['train_lb'] = dltrain_x
         loader_dict['train_ulb'] = dltrain_u
         loader_dict['eval'] = dlval
@@ -326,7 +329,7 @@ if __name__ == "__main__":
     '''
     Backbone Net Configurations
     '''
-    parser.add_argument('--net', type=str, default='WideResNet')
+    parser.add_argument('--net', type=str, default='wrn')
     parser.add_argument('--net_from_name', type=bool, default=False)
     parser.add_argument('--depth', type=int, default=28)
     parser.add_argument('--widen_factor', type=int, default=2)

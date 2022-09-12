@@ -1,8 +1,7 @@
 # MutexMatch4SSL
 
-Code for MutexMatch.
+Code for **[MutexMatch: Semi-supervised Learning with Mutex-based Consistency Regularization](https://arxiv.org/abs/2203.14316)**.
 
-arxiv: [https://arxiv.org/abs/2203.14316][a].
 ## Requirements
 - matplotlib==3.3.2
 - numpy==1.19.2

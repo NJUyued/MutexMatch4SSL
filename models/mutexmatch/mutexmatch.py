@@ -1,19 +1,13 @@
-from ast import arg
-from models.nets.net import *
-from torch import optim
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision.models as models
-from torch.cuda.amp import autocast, GradScaler
-from random import randint
-from types import MethodType,FunctionType
 import numpy as np
 import os
 import contextlib
-from train_utils import AverageMeter
 
+from models.nets.net import *
+from torch.cuda.amp import autocast, GradScaler
 from .mutexmatch_utils import consistency_loss, Get_Scalar 
 from train_utils import ce_loss
 
@@ -39,13 +33,8 @@ class MutexMatch:
         self.num_classes = num_classes
         self.ema_m = ema_m
         
-<<<<<<< HEAD
         self.train_model = TotalNet(net_builder, num_classes)       
         self.eval_model = TotalNet(net_builder, num_classes) 
-=======
-        self.train_model = TotalNet(net_builder, num_classes, net_name)       
-        self.eval_model = TotalNet(net_builder, num_classes, net_name) 
->>>>>>> d0930ed032a9f05ac4931ff527195eb52701a80e
         self.num_eval_iter = num_eval_iter
         self.t_fn = Get_Scalar(T) #temperature params function
         self.p_fn = Get_Scalar(p_cutoff) #confidence cutoff function

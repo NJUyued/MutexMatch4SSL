@@ -22,13 +22,20 @@ Code for **[MutexMatch: Semi-supervised Learning with Mutex-based Consistency Re
 ```
 python train_mutex.py --rank 0 --gpu [0/1/...] @@@other args@@@
 ```
-### Training with Multi-GPUs
+### Training with Multi-GPUs (with DataParallel)
 
 ```
 python train_mutex.py --world-size 1 --rank 0 @@@other args@@@
 ```
+
+### Training with Multi-GPUs (with DistributedDataParallel and single node)
+
+```
+python train_mutex.py --world-size 1 --rank 0 --multiprocessing-distributed @@@other args@@@
+```
+
 ### Examples of Running
-This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. For CIFAR-100, you need set `--widen_factor 8` for WRN-28-8 whereas WRN-28-2 is used for CIFAR-10.  Note that you need set `--net_from_name True --net resnet18` for STL-10 and mini-ImageNet. 
+This code assumes 1 epoch of training, but the number of iterations is 2\*\*20. For CIFAR-100, you need set `--widen_factor 8` for WRN-28-8 whereas WRN-28-2 is used for CIFAR-10.  Note that you need set `--net resnet18` for STL-10 and mini-ImageNet. 
 
 #### WideResNet
 - CIFAR-10

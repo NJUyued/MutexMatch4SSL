@@ -14,7 +14,7 @@ Code for **[MutexMatch: Semi-supervised Learning with Mutex-based Consistency Re
 - `--k` : Control the intensity of consistency regularization on TNC. By default, $k$=num_classes.
 - `--num_classes` : The number of classes in your dataset.
 - `--num_labels` : Amount of labeled data used.  
-- `--net [wrn/resnet18/cnn13]` : By default, Wide ResNet (WRN-28-2) are used for experiments. You can use `--widen_factor 8` for WRN-28-8. We provide alternatives as follows: resnet18 and cnn13.
+- `--net [wrn/resnet18/cnn13]` : By default, Wide ResNet (WRN-28-2) are used for experiments. You can use `--widen_factor 8` for WRN-28-8. We provide alternatives as follows: ResNet18 and CNN-13.
 - `--dataset [cifar10/cifar100/svhn/stl10/miniimage/tinyimage]` and `--data_dir` : Your dataset name and path. We support five datasets: CIFAR-10, CIFAR-100, SVHN, STL-10, mini-ImageNet and Tiny-ImageNet. When `--dataset stl10`, set `--fold [0/1/2/3/4]` and `--num_labels [1000/5000]`.
 - `--num_eval_iter` : After how many iterations, we evaluate the model. Note that although we show the accuracy of pseudo-labels on unlabeled data in the evaluation, this is only to show the training process. We did not use any information about labels for unlabeled data in the training. Additionally, when you train model on STL-10, the pseudo-label accuracy will not be displayed normally, because we don't have ground-truth of unlabeled data.
 ### Training with Single GPU
@@ -22,13 +22,15 @@ Code for **[MutexMatch: Semi-supervised Learning with Mutex-based Consistency Re
 ```
 python train_mutex.py --rank 0 --gpu [0/1/...] @@@other args@@@
 ```
-### Training with Multi-GPUs (with DataParallel)
+### Training with Multi-GPUs
+
+- Using DataParallel
 
 ```
 python train_mutex.py --world-size 1 --rank 0 @@@other args@@@
 ```
 
-### Training with Multi-GPUs (with DistributedDataParallel and single node)
+- Using DistributedDataParallel and single node
 
 ```
 python train_mutex.py --world-size 1 --rank 0 --multiprocessing-distributed @@@other args@@@

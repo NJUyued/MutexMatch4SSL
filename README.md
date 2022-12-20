@@ -1,6 +1,14 @@
 # MutexMatch4SSL
 
-Code for **[MutexMatch: Semi-supervised Learning with Mutex-based Consistency Regularization](https://arxiv.org/abs/2203.14316)**.
+
+Code for ***MutexMatch: Semi-supervised Learning with Mutex-based Consistency Regularization*** [[arXiv](https://arxiv.org/abs/2203.14316) | [Paper](https://ieeexplore.ieee.org/document/9992211) | [code](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)].
+
+Authors: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi.
+
+Our paper is accepted by IEEE Transactions on Neural Networks and Learning Systems (TNNLS) 📕📕.
+
+> Related works:
+> - 🆕 Interested in robust semi-supervised learning with mismatched distributions? Check out our ECCV'22 [paper](https://arxiv.org/abs/2208.04619) and [code](https://github.com/NJUyued/RDA4RobustSSL).
 
 ## Requirements
 - matplotlib==3.3.2
@@ -104,6 +112,17 @@ Use `--net [resnet18/cnn13]` for different backbones.
 | 5| 63.23 |94.84 |92.84 |95.30|
 |avg | 57.52 |92.23 |94.21 |95.00|
 
+## Citation
+Please cite our paper if you find MutexMatch useful:
+
+```
+@article{duan2022mutexmatch,
+  title={MutexMatch: Semi-supervised Learning with Mutex-based Consistency Regularization},
+  author={Duan, Yue and Zhao, Zhen and Qi, Lei and Wang, Lei and Zhou, Luping and Shi, Yinghuan and Gao, Yang},
+  journal={arXiv preprint arXiv:2203.14316},
+  year={2022}
+}
+```
 
 ## Acknowledgement
 Our code is based on open source code: [LeeDoYup/FixMatch-pytorch][1]

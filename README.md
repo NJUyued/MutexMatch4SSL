@@ -9,7 +9,7 @@ Authors: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi.
  - Latest news: 
     - Our paper is accepted by IEEE Transactions on Neural Networks and Learning Systems (TNNLS) 📕📕.
  - Related works:
-    - 🆕 Interested in robust SSL with mismatched distributions? Check out our ECCV'22 paper **RDA**. [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)]
+    - 🆕 Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? Check out our ECCV'22 paper **RDA**. [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)]
 
 ## Requirements
 - matplotlib==3.3.2

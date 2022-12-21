@@ -2,12 +2,12 @@
 
 This repo is the official Pytorch implementation of our paper:
 
-> ***MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization*** [[arXiv](https://arxiv.org/abs/2203.14316) | [Published paper](https://ieeexplore.ieee.org/document/9992211) | [Code download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]   
+> ***MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization***   
 **Authors**: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi
 
-
+ - Quick links: [[arXiv](https://arxiv.org/abs/2203.14316) | [Published paper](https://ieeexplore.ieee.org/document/9992211) | [Code download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
  - Latest news: 
-    - Our paper is accepted by IEEE Transactions on Neural Networks and Learning Systems (TNNLS) 📕📕.
+    - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
  - Related works:
     - 🆕 Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
 

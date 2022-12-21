@@ -1,14 +1,15 @@
 # MutexMatch4SSL
 
+This repo is the official Pytorch implementation of our paper:
 
-Code for ***MutexMatch: Semi-supervised Learning with Mutex-based Consistency Regularization*** [[arXiv](https://arxiv.org/abs/2203.14316) | [Paper](https://ieeexplore.ieee.org/document/9992211) | [code](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)].
+> ***MutexMatch: Semi-supervised Learning with Mutex-based Consistency Regularization***  
+Authors: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi.  
+[[arXiv](https://arxiv.org/abs/2203.14316) | [Paper](https://ieeexplore.ieee.org/document/9992211) | [code](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]
 
-Authors: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi.
-
-Our paper is accepted by IEEE Transactions on Neural Networks and Learning Systems (TNNLS) 📕📕.
-
-> Related works:
-> - 🆕 Interested in robust semi-supervised learning with mismatched distributions? Check out our ECCV'22 [paper](https://arxiv.org/abs/2208.04619) and [code](https://github.com/NJUyued/RDA4RobustSSL).
+ - Latest news: 
+    - Our paper is accepted by IEEE Transactions on Neural Networks and Learning Systems (TNNLS) 📕📕.
+ - Related works:
+    - 🆕 Interested in robust SSL with mismatched distributions? Check out our ECCV'22 paper **RDA**. [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)]
 
 ## Requirements
 - matplotlib==3.3.2

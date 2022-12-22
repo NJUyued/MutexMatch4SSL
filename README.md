@@ -95,7 +95,7 @@ python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval
 python train_mutex.py --world-size 1 --rank 0 --lr_decay cos --seed 1 --num_eval_iter 1000 --overwrite --save_name miniimage --dataset miniimage --num_classes 100 --num_labels 1000 --net resnet18 --gpu 0
 ```
 
-***
+
 ## Resume Training and Evaluation
 ### Resume
 If you restart the training, please use `--resume --load_path @checkpoint path@`. 

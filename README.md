@@ -3,13 +3,25 @@
 This repo is the official Pytorch implementation of our paper:
 
 > ***MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization***   
-**Authors**: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi
+**Authors**: Yue Duan, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi   
 
  - Quick links: [[arXiv](https://arxiv.org/abs/2203.14316) | [Published paper](https://ieeexplore.ieee.org/document/9992211) | [Code download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
  - Latest news: 
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
  - Related works:
     - 🆕 Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
+    
+
+- Ranks in [Papers With Code](https://paperswithcode.com/paper/mutexmatch-semi-supervised-learning-with-1):
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-17)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-17?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-15)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-15?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-7)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-7?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-16)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-16?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-25)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-25?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-svhn-1)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-svhn-1?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-svhn-2)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-svhn-2?p=mutexmatch-semi-supervised-learning-with-1)
+    - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-mini-2)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-mini-2?p=mutexmatch-semi-supervised-learning-with-1)
+
 
 ## Introduction
 
@@ -126,6 +138,22 @@ Please cite our paper if you find MutexMatch useful:
   author={Duan, Yue and Zhao, Zhen and Qi, Lei and Wang, Lei and Zhou, Luping and Shi, Yinghuan and Gao, Yang},
   journal={arXiv preprint arXiv:2203.14316},
   year={2022}
+}
+```
+
+or 
+
+
+```
+@article{9992211,
+  author={Duan, Yue and Zhao, Zhen and Qi, Lei and Wang, Lei and Zhou, Luping and Shi, Yinghuan and Gao, Yang},
+  journal={IEEE Transactions on Neural Networks and Learning Systems}, 
+  title={MutexMatch: Semi-Supervised Learning With Mutex-Based Consistency Regularization}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1-15},
+  doi={10.1109/TNNLS.2022.3228380}
 }
 ```
 

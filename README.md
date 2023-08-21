@@ -9,7 +9,7 @@ This repo is the official Pytorch implementation of our paper:
  - Latest news: 
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
  - Related works:
-    - 🆕 Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[arXiv]() | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
+    - 🆕 Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[arXiv](https://arxiv.org/abs/2308.08872) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
     - Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
     
 

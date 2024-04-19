@@ -9,7 +9,8 @@ This repo is the official Pytorch implementation of our paper:
  - Latest news: 
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
  - Related works:
-    - 🆕 Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[arXiv](https://arxiv.org/abs/2308.08872) | [Repo](https://github.com/NJUyued/PRG4SSL-MNAR)].
+    - 🆕 **[LATEST]** Interested in the SSL in fine-grained visual classification (SS-FGVC)? 👉 Check out our AAAI'24 paper **SoC** [[arXiv](https://arxiv.org/abs/2312.12237) | [Repo](https://github.com/NJUyued/SoC4SS-FGVC/)].
+    - Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[arXiv](https://arxiv.org/abs/2308.08872) | [Repo](https://github.com/NJUyued/PRG4SSL-MNAR)].
     - Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
     
 

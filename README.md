@@ -5,13 +5,13 @@ This repo is the official Pytorch implementation of our paper:
 > **MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization**   
 ***Authors**: **Yue Duan**, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi*   
 
- - Quick links: [[arXiv](https://arxiv.org/abs/2203.14316) | [Published Paper](https://ieeexplore.ieee.org/document/9992211) | [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
+ - Quick links: [[Paper-arXiv](https://arxiv.org/pdf/2203.14316) | [Paper-Published](https://ieeexplore.ieee.org/document/9992211) | [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
  - Latest news: 
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
  - Related works:
-    - 🆕 **[LATEST]** Interested in the SSL in fine-grained visual classification (SS-FGVC)? 👉 Check out our AAAI'24 paper **SoC** [[arXiv](https://arxiv.org/abs/2312.12237) | [Repo](https://github.com/NJUyued/SoC4SS-FGVC/)].
-    - Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[arXiv](https://arxiv.org/abs/2308.08872) | [Repo](https://github.com/NJUyued/PRG4SSL-MNAR)].
-    - Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[arXiv](https://arxiv.org/abs/2208.04619) | [Repo](https://github.com/NJUyued/RDA4RobustSSL)].
+    - 🆕 **[LATEST]** Interested in the SSL in fine-grained visual classification (SS-FGVC)? 👉 Check out our AAAI'24 paper **SoC** [[Paper-arXiv](https://arxiv.org/pdf/2312.12237) | [Code](https://github.com/NJUyued/SoC4SS-FGVC/)].
+    - Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[Paper-arXiv](https://arxiv.org/pdf/2308.08872) | [Code](https://github.com/NJUyued/PRG4SSL-MNAR)].
+    - Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[Paper-arXiv](https://arxiv.org/pdf/2208.04619) | [Code](https://github.com/NJUyued/RDA4RobustSSL)].
     
 
 - Ranks in [Papers With Code](https://paperswithcode.com/paper/mutexmatch-semi-supervised-learning-with-1):

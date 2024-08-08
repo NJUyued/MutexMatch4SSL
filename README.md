@@ -3,15 +3,15 @@
 This repo is the official Pytorch implementation of our paper:
 
 > **MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization**   
-***Authors**: **Yue Duan**, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi*   
+**Authors**: ***[Yue Duan](https://njuyued.github.io/)**, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi*   
 
  - 🔗 Quick links: [[PDF](https://arxiv.org/pdf/2203.14316)/[Abs](https://arxiv.org/abs/2203.14316)-arXiv | [PDF&Abs](https://ieeexplore.ieee.org/document/9992211)-Published | [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
  - 📰 Latest news: 
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
  - 📑 Related works:
-    - 🆕 **[LATEST]** Interested in the SSL in fine-grained visual classification (SS-FGVC)? 👉 Check out our AAAI'24 paper **SoC** [[PDF-arXiv](https://arxiv.org/pdf/2312.12237) | [Code](https://github.com/NJUyued/SoC4SS-FGVC/)].
-    - Interested in more scenarios of SSL with mismatched distributions? 👉 Check out our ICCV'23 paper **PRG** [[PDF-arXiv](https://arxiv.org/pdf/2308.08872) | [Code](https://github.com/NJUyued/PRG4SSL-MNAR)].
-    - Interested in robust SSL with mismatched distributions or more applications of complementary label in SSL? 👉 Check out our ECCV'22 paper **RDA** [[PDF-arXiv](https://arxiv.org/pdf/2208.04619) | [Code](https://github.com/NJUyued/RDA4RobustSSL)].
+    - 🆕 **[LATEST]** Interested in the **SSL in fine-grained visual classification (SS-FGVC)**? 👉 Check out our AAAI'24 paper **SoC** [[PDF-arXiv](https://arxiv.org/pdf/2312.12237) | [Code](https://github.com/NJUyued/SoC4SS-FGVC/)].
+    - Interested in more scenarios of **SSL with mismatched distributions**? 👉 Check out our ICCV'23 paper **PRG** [[PDF-arXiv](https://arxiv.org/pdf/2308.08872) | [Code](https://github.com/NJUyued/PRG4SSL-MNAR)].
+    - Interested in **robust SSL with mismatched distributions** or more applications of **complementary label** in SSL? 👉 Check out our ECCV'22 paper **RDA** [[PDF-arXiv](https://arxiv.org/pdf/2208.04619) | [Code](https://github.com/NJUyued/RDA4RobustSSL)].
     
 
 - Ranks in [Papers With Code](https://paperswithcode.com/paper/mutexmatch-semi-supervised-learning-with-1):
@@ -151,12 +151,12 @@ or
   author={Duan, Yue and Zhao, Zhen and Qi, Lei and Wang, Lei and Zhou, Luping and Shi, Yinghuan and Gao, Yang},
   journal={IEEE Transactions on Neural Networks and Learning Systems}, 
   title={MutexMatch: Semi-Supervised Learning With Mutex-Based Consistency Regularization}, 
-  year={2022},
-  volume={},
-  number={},
-  pages={1-15},
-  doi={10.1109/TNNLS.2022.3228380}
-}
+  year={2024},
+  volume={35},
+  number={6},
+  pages={8441-8455},
+  keywords={Training;Predictive models;Semisupervised learning;Data models;Task analysis;Entropy;Labeling;Mutex-based consistency regularization;semi-supervised classification},
+  doi={10.1109/TNNLS.2022.3228380}}
 ```
 
 ## Acknowledgement

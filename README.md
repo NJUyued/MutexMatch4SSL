@@ -5,17 +5,17 @@ This repo is the official Pytorch implementation of our paper:
 > **MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization**   
 **Authors**: ***[Yue Duan](https://njuyued.github.io/)**, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi*   
 
- - 🔗 Quick links: [[PDF](https://arxiv.org/pdf/2203.14316)/[Abs](https://arxiv.org/abs/2203.14316)-arXiv | [PDF&Abs](https://ieeexplore.ieee.org/document/9992211)-Published | [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
- - 📰 Latest news:
+ - 🔗 **Quick links:** [[PDF](https://arxiv.org/pdf/2203.14316)/[Abs](https://arxiv.org/abs/2203.14316)-arXiv | [PDF&Abs](https://ieeexplore.ieee.org/document/9992211)-Published | [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
+ - 📰 **Latest news:**
     - The [final version](https://ieeexplore.ieee.org/abstract/document/9992211) is published in: [IEEE Transactions on Neural Networks and Learning Systems (Volume: 35, Issue: 6, June 2024)](https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=10547160&punumber=5962385).
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
- - 📑 Related works:
+ - 📑 **Related works:**
     - 🆕 **[LATEST]** Interested in the **SSL in fine-grained visual classification (SS-FGVC)**? 👉 Check out our AAAI'24 paper **SoC** [[PDF-arXiv](https://arxiv.org/pdf/2312.12237) | [Code](https://github.com/NJUyued/SoC4SS-FGVC/)].
     - Interested in more scenarios of **SSL with mismatched distributions**? 👉 Check out our ICCV'23 paper **PRG** [[PDF-arXiv](https://arxiv.org/pdf/2308.08872) | [Code](https://github.com/NJUyued/PRG4SSL-MNAR)].
     - Interested in **robust SSL with mismatched distributions** or more applications of **complementary label** in SSL? 👉 Check out our ECCV'22 paper **RDA** [[PDF-arXiv](https://arxiv.org/pdf/2208.04619) | [Code](https://github.com/NJUyued/RDA4RobustSSL)].
     
 
-- Ranks in [Papers With Code](https://paperswithcode.com/paper/mutexmatch-semi-supervised-learning-with-1):
+- 🏆 **Ranks in [Papers With Code](https://paperswithcode.com/paper/mutexmatch-semi-supervised-learning-with-1):**
     - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-17)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-17?p=mutexmatch-semi-supervised-learning-with-1)
     - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-15)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-15?p=mutexmatch-semi-supervised-learning-with-1)
     - [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mutexmatch-semi-supervised-learning-with-1/semi-supervised-image-classification-on-cifar-7)](https://paperswithcode.com/sota/semi-supervised-image-classification-on-cifar-7?p=mutexmatch-semi-supervised-learning-with-1)

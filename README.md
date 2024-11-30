@@ -5,7 +5,9 @@ This repo is the official Pytorch implementation of our paper:
 > **MutexMatch: Semi-Supervised Learning with Mutex-Based Consistency Regularization**   
 **Authors**: ***[Yue Duan](https://njuyued.github.io/)**, Lei Qi, Lei Wang, Luping Zhou and Yinghuan Shi*   
 
- - 🔗 **Quick links:** [[PDF](https://arxiv.org/pdf/2203.14316)/[Abs](https://arxiv.org/abs/2203.14316)-arXiv | [PDF&Abs](https://ieeexplore.ieee.org/document/9992211)-Published | [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)]  
+ - 🔗 **Quick links:**
+     - [Code Download](https://github.com/NJUyued/MutexMatch4SSL/archive/refs/heads/master.zip)
+     - [[PDF](https://arxiv.org/pdf/2203.14316)/[Abs](https://arxiv.org/abs/2203.14316)-arXiv | [PDF&Abs](https://ieeexplore.ieee.org/document/9992211)-Published]  
  - 📰 **Latest news:**
     - The [final version](https://ieeexplore.ieee.org/abstract/document/9992211) is published in: [IEEE Transactions on Neural Networks and Learning Systems (Volume: 35, Issue: 6, June 2024)](https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=10547160&punumber=5962385).
     - Our paper is accepted by **IEEE Transactions on Neural Networks and Learning Systems (TNNLS)** 📕📕.
